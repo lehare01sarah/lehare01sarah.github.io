@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jira WDC</title>
+    <title>Jira Web Data Connector</title>
+    
+    <!-- Include Tableau API -->
     <script src="https://cdn.jsdelivr.net/npm/tableau-api"></script> <!-- Tableau WDC API -->
-    <script src="wdc.js"></script> <!-- External JS to handle API calls -->
+    
+    <!-- Include jQuery for AJAX requests -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- External JS to handle API calls and WDC logic -->
+    <script src="wdc.js"></script>
 </head>
 <body>
     <h1>Jira Web Data Connector</h1>
-    <p>Enter your Jira details to connect:</p>
+    <p>Fill in the fields to connect to Jira and load data into Tableau.</p>
 
-    <!-- Form for user inputs -->
-    <form id="jiraForm">
-        <label for="jiraEndpoint">Jira Endpoint (e.g., https://your-jira-instance.atlassian.net):</label>
-        <input type="text" id="jiraEndpoint" required>
-        <br>
-        <label for="jiraUsername">Jira Username:</label>
-        <input type="text" id="jiraUsername" required>
-        <br>
-        <label for="jiraApiToken">Jira API Token:</label>
-        <input type="password" id="jiraApiToken" required>
-        <br>
-        <button type="submit">Connect to Jira</button>
-    </form>
+    <!-- Input fields for Jira credentials -->
+    <label for="jiraEndpoint">Jira Endpoint:</label>
+    <input type="text" id="jiraEndpoint" placeholder="e.g., https://your-jira-instance.atlassian.net">
+    <br><br>
+    
+    <label for="jiraUsername">Username:</label>
+    <input type="text" id="jiraUsername">
+    <br><br>
+    
+    <label for="jiraApiToken">API Token:</label>
+    <input type="text" id="jiraApiToken">
+    <br><br>
+    
+    <button id="connectButton">Connect to Jira</button>
 
     <div id="status"></div>
 </body>
