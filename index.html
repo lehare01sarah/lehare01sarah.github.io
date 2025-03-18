@@ -3,35 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rounded Box</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4; /* Light background color */
-        }
-
-        .rounded-box {
-            background-color: #ADD8E6; /* Light blue background */
-            border-radius: 20px; /* Rounded corners */
-            padding: 20px;
-            width: 300px; /* Width of the rounded box */
-            text-align: center;
-            font-size: 20px;
-            color: #333; /* Text color */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
-        }
-    </style>
+    <title>Jira WDC</title>
+    <script src="https://cdn.jsdelivr.net/npm/tableau-api"></script> <!-- Tableau WDC API -->
+    <script src="wdc.js"></script> <!-- External JS to handle API calls -->
 </head>
 <body>
+    <h1>Jira Web Data Connector</h1>
+    <p>Enter your Jira details to connect:</p>
 
-    <div class="rounded-box">
-        Your Text Here
-    </div>
+    <!-- Form for user inputs -->
+    <form id="jiraForm">
+        <label for="jiraEndpoint">Jira Endpoint (e.g., https://your-jira-instance.atlassian.net):</label>
+        <input type="text" id="jiraEndpoint" required>
+        <br>
+        <label for="jiraUsername">Jira Username:</label>
+        <input type="text" id="jiraUsername" required>
+        <br>
+        <label for="jiraApiToken">Jira API Token:</label>
+        <input type="password" id="jiraApiToken" required>
+        <br>
+        <button type="submit">Connect to Jira</button>
+    </form>
 
+    <div id="status"></div>
 </body>
 </html>
