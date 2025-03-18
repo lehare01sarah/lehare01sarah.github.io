@@ -38,6 +38,7 @@
         var jiraUrl = `${jiraEndpoint}/rest/api/2/search?jql=project=PROJ`;
         var auth = btoa(username + ":" + apiToken); // Basic Auth header
 
+        // Use jQuery to make the API call
         $.ajax({
             url: jiraUrl,
             type: "GET",
@@ -62,7 +63,24 @@
                     });
                 });
 
+                // Append the data to Tableau's table
                 table.appendRows(tableData);
                 doneCallback();
             },
-            error: function (xhr, status,
+            error: function (xhr, status, error) {
+                // Handle error if the request fails
+                $("#status").html("<p style='color: red;'>Error: " + error + "</p>");
+                doneCallback();
+            }
+        });
+    };
+
+    // Register the connector with Tableau
+    tableau.registerConnector(myConnector);
+
+    // Click event handler to start the connection
+    $("#connectButton").click(function () {
+        tableau.connectionName = "Jira Issues Data"; // Name of the connection
+        tableau.submit(); // Submit the connection to Tableau
+    });
+})();
